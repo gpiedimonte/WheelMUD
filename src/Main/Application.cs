@@ -104,15 +104,15 @@ namespace WheelMUD.Main
             {
                 // If the database file doesn't exist, try to copy the original source.
                 string sourcePath = null;
-                int i = appDir.IndexOf("\\systemdata\\", System.StringComparison.Ordinal);
+                int i = appDir.IndexOf("systemdata", System.StringComparison.Ordinal);
                 if (i > 0)
                 {
-                    sourcePath = appDir.Substring(0, i) + "\\systemdata\\Files\\";
+                    sourcePath = appDir.Substring(0, i) + Path.Combine("systemdata", "Files");//"\\systemdata\\Files\\";
                 }
                 else
                 {
                     sourcePath = Path.GetDirectoryName(appDir);
-                    sourcePath = Path.Combine(sourcePath + "\\systemdata\\Files\\");
+                    sourcePath = Path.Combine(sourcePath, "systemdata", "Files"); 
                 }
 
                 DirectoryCopy(sourcePath, destDir, true);
